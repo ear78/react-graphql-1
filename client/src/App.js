@@ -1,6 +1,7 @@
-import './App.css';
+import styles from './App.module.scss';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Launches from './components/Launches'
+import Logo from './components/Logo'
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
@@ -10,8 +11,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <h1>SpaceX</h1>
+      <div className={styles.App}>
+        <div className={styles.BgImage}>
+          <Logo/>
+          <h1>Launches</h1>
+        </div>
+
         <Launches/>
       </div>
     </ApolloProvider>

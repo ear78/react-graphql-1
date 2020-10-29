@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './Launches.module.scss'
 import { useQuery, gql } from '@apollo/client'
 import LaunchItem from './LaunchItem'
 
@@ -10,6 +11,9 @@ const LAUNCHES_QUERY = gql`
       mission_name
       launch_date_local
       launch_success
+      links {
+        mission_patch
+      }
     }
   }
 `
@@ -21,12 +25,12 @@ const Launches = (props) => {
   if (error) return <p>Error :(</p>;
 
     let launch = data.launches.map(launch => {
+      console.log('launch', launch);
       return <LaunchItem key={launch.flight_number} data={launch}/>
     })
 
   return (
-    <div>
-      <h2>Launches</h2>
+    <div className={styles.Launches}>
       { launch }
     </div>
   )
