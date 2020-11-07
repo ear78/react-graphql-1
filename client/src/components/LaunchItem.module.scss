@@ -1,0 +1,56 @@
+.LaunchItem {
+  img {
+    width: auto;
+    height: 75px;
+    margin-bottom: 20px;
+    border: 1px solid #757575;
+    border-radius: 3px;
+    padding: 10px;
+  }
+
+  h5 {
+    text-transform: uppercase;
+    font-size: 1rem;
+
+    span {
+      color: #757575;
+      text-transform: none;
+      font-weight: 300;
+    }
+  }
+
+  .ItemTitle {
+    font-weight: 600;
+    text-transform: uppercase;
+
+    span {
+      text-transform: none;
+      font-weight: 300;
+      // color: #757575;
+    }
+  }
+}
+
+.failed {
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 40px;
+    background-color: crimson;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
+
+.success {
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 40px;
+    margin-left: 10px;
+    vertical-align: middle;
+    background-color: green;
+  }
+}
