@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './LaunchItem.module.scss'
 import Moment from 'react-moment'
 
-const LaunchItem = ({ data:{ flight_number, mission_name, launch_date_local, launch_success, links: { mission_patch } }}) => {
+const LaunchItem = ({ click, data:{ flight_number, mission_name, launch_date_local, launch_success, links: { mission_patch } }}) => {
+
   return (
     <div key={flight_number} className={`card card-body mb-3 ${styles.LaunchItem}`}>
       <div className="row">
@@ -15,10 +16,9 @@ const LaunchItem = ({ data:{ flight_number, mission_name, launch_date_local, lau
           <p className={`${styles.ItemTitle} ${launch_success ? styles.success : styles.failed}`}>Launched: <span>{launch_success ? 'Successful' : 'Failed'}</span></p>
         </div>
         <div className="col-md-3 text-right">
-          <button className="btn btn-secondary">Launch Details</button>
+          <button onClick={click} className="btn btn-secondary">Launch Details</button>
         </div>
       </div>
-
     </div>
   )
 }
