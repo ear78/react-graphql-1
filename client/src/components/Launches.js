@@ -12,6 +12,13 @@ const LAUNCHES_QUERY = gql`
       mission_name
       launch_date_local
       launch_success
+      launch_site {
+        site_name_long
+      }
+      rocket {
+        rocket_type
+        rocket_name
+      }
       links {
         mission_patch
       }
@@ -23,7 +30,7 @@ const Launches = (props) => {
 
   const [{currentLaunch, isModalActive}, setCurrentLaunch] = useState(
     {
-      currentLaunch: {},
+      currentLaunch: null,
       isModalActive: false
     }
   );
@@ -34,14 +41,24 @@ const Launches = (props) => {
   if (error) return <p>Error :(</p>;
 
     let launch = data.launches.map(launch => {
-      // console.log('launch', launch);
-      return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch, isModalActive: true})} key={launch.flight_number} data={launch}/>
+      return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={launch.flight_number} data={launch}/>
     })
+
+    let launchModal
+    if(isModalActive) {
+      launchModal = <LaunchModal
+        click={() => setCurrentLaunch({isModalActive: false})}
+        setModal={isModalActive}
+        selectedLaunch={currentLaunch}/>
+    } else {
+      launchModal = null
+    }
+
 
   return (
     <div className={styles.Launches}>
       { launch }
-      <LaunchModal setModal={isModalActive} selectedLaunch={currentLaunch}/>
+      { launchModal }
     </div>
   )
 }
