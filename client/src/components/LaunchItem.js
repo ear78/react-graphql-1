@@ -12,8 +12,13 @@ const LaunchItem = ({ click, data:{ flight_number, mission_name, launch_date_loc
           <img src={mission_patch}/>
           <h5>Mission Name: <span>{mission_name}</span></h5>
           <p className={styles.ItemTitle}>Flight: <span>#{flight_number}</span></p>
+          <p className={styles.ItemTitle}>
+            Launch Status: <span>{launch_success ? 'Success' : 'Failed'}</span>
+            <span className={`${launch_success ? styles.success : styles.failed}`}></span>
+          </p>
+
           <p className={styles.ItemTitle}>Launch Date: <span><Moment format={"YYYY/MM/DD"}>{launch_date_local}</Moment></span></p>
-          
+
         </div>
         <div className="col-md-3 text-right">
           <button onClick={click} className="btn btn-secondary">Launch Details</button>
