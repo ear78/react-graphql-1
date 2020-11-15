@@ -4,6 +4,7 @@ import { useQuery, gql } from '@apollo/client'
 import styles from './ModalContent.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
+import Moment from 'react-moment'
 
 
 const LAUNCH_QUERY = gql`
@@ -39,13 +40,43 @@ const ModalContent = ({ click, selectedLaunch }) => {
 
   return (
     <div className={`card card-body ${styles.InnerCard}`}>
-      <FontAwesomeIcon onClick={click} icon={faTimesCircle} />
-      <p>{data.launch.flight_number}</p>
-      <p>{data.launch.mission_name} - {data.launch.rocket.rocket_name} - {data.launch.rocket.rocket_type}</p>
-      <p>{data.launch.details}</p>
-      <p>{data.launch.launch_site.site_name_long}</p>
-      <p>{data.launch.launch_success ? 'Success' : 'Failed'} - {data.launch.launch_date_local}</p>
-      <p>{data.launch.links.mission_patch}</p>
+      <FontAwesomeIcon className={styles.Svg} onClick={click} icon={faTimesCircle} />
+      <div className={styles.TopContainer}>
+        <img
+          className={styles.ImagePatch}
+          src={data.launch.links.mission_patch}
+          alt={`${data.launch.rocket.rocket_name} ${data.launch.mission_name}`}/>
+
+        <p className={styles.TopDetails}>
+          <h3 className={styles.Title}>Flight: #{data.launch.flight_number}</h3>
+          <p>
+            <span className={styles.DetailsTitle}>Mission Name:</span> {data.launch.mission_name}
+          </p>
+          <p><span className={styles.DetailsTitle}>Rocket Name:</span> {data.launch.rocket.rocket_name}</p>
+          <p><span className={styles.DetailsTitle}>Rocket Type:</span> {data.launch.rocket.rocket_type}</p>
+        </p>
+      </div>
+
+      <div className={styles.BottomContainer}>
+        <h3>Launch Details</h3>
+        <p className={styles.Details}>
+          <p className={styles.DetailsTitle}>Details</p>
+          - {data.launch.details}
+        </p>
+        <p className={styles.Details}>
+          <p className={styles.DetailsTitle}>Site Launch Location</p>
+          - {data.launch.launch_site.site_name_long}
+        </p>
+        <p className={styles.Details}>
+          <p className={styles.DetailsTitle}>Launch Status</p>
+          - {data.launch.launch_success ? 'Success' : 'Failed'}
+          <span className={`${data.launch.launch_success ? styles.success : styles.failed}`}></span>
+        </p>
+        <p className={styles.Details}>
+          <p className={styles.DetailsTitle}>Launch Date</p>
+          - <Moment format={"YYYY/MM/DD"}>{data.launch.launch_date_local}</Moment>
+        </p>
+      </div>
     </div>
   )
 }

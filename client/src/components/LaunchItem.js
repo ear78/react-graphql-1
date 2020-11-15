@@ -13,7 +13,7 @@ const LaunchItem = ({ click, data:{ flight_number, mission_name, launch_date_loc
           <h5>Mission Name: <span>{mission_name}</span></h5>
           <p className={styles.ItemTitle}>Flight: <span>#{flight_number}</span></p>
           <p className={styles.ItemTitle}>Launch Date: <span><Moment format={"YYYY/MM/DD"}>{launch_date_local}</Moment></span></p>
-          <p className={`${styles.ItemTitle} ${launch_success ? styles.success : styles.failed}`}>Launched: <span>{launch_success ? 'Successful' : 'Failed'}</span></p>
+          
         </div>
         <div className="col-md-3 text-right">
           <button onClick={click} className="btn btn-secondary">Launch Details</button>
