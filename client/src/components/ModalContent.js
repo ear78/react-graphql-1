@@ -62,7 +62,7 @@ const ModalContent = ({ click, selectedLaunch }) => {
         <h3>Launch Details</h3>
         <p className={styles.Details}>
           <p className={styles.DetailsTitle}>Details</p>
-          - {data.launch.details}
+          - {!data.launch.details ? 'No details Available.' : data.launch.details}
         </p>
         <p className={styles.Details}>
           <p className={styles.DetailsTitle}>Site Launch Location</p>
