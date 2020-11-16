@@ -1,0 +1,14 @@
+.LaunchModal {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 10vh;
+  background: rgba(0, 0, 0, 0.7);
+
+  &.Active {
+    display: block;
+  }
+}

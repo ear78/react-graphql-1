@@ -17,7 +17,13 @@ function App() {
           <h1>Launches</h1>
         </div>
 
-        <Launches/>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <Launches/>
+            </div>
+          </div>
+        </div>
       </div>
     </ApolloProvider>
   );
