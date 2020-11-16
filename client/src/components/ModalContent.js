@@ -5,6 +5,7 @@ import styles from './ModalContent.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import Moment from 'react-moment'
+import DataLoading from './DataLoading'
 
 
 const LAUNCH_QUERY = gql`
@@ -35,7 +36,7 @@ const ModalContent = ({ click, selectedLaunch }) => {
     variables: { flight_number },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <DataLoading/>;
   if (error) return <p>Error :(</p>;
 
   return (
