@@ -38,11 +38,11 @@ const Launches = (props) => {
 
   const { loading, error, data } = useQuery(LAUNCHES_QUERY);
 
-  if (loading) return <DataLoading/>;
+  if (loading) return <DataLoading />;
   if (error) return <p>Error :(</p>;
 
-    let launch = data.launches.map(launch => {
-      return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={launch.flight_number} data={launch}/>
+    let launch = data.launches.map((launch, i) => {
+      return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={i} data={launch}/>
     })
 
     let launchModal
