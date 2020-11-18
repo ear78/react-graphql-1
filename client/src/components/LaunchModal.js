@@ -5,7 +5,7 @@ import { useQuery, gql } from '@apollo/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import Moment from 'react-moment'
-import DataLoading from './DataLoading'
+import SmallLoader from './SmallLoader'
 
 const LAUNCH_QUERY = gql`
   query LaunchQuery($flight_number: Int!) {
@@ -36,11 +36,18 @@ const LaunchModal = ({click, setModal, selectedLaunch}) => {
     variables: { flight_number },
   });
 
-  if (loading) return <DataLoading/>;
   if (error) return <p>Error :(</p>;
-
-  return (
-    <div className={`${styles.LaunchModal} ${setModal ? styles.Active : ''}`}>
+  if (loading) {
+    return (
+      <div className={`${styles.LaunchModal} ${setModal ? styles.Active : ''}`}>
+        <div className={`card card-body ${styles.InnerCard} ${styles.Loading}`}>
+          <SmallLoader/>
+        </div>
+      </div>
+      )
+  } else {
+    return (
+      <div className={`${styles.LaunchModal} ${setModal ? styles.Active : ''}`}>
         <div className={`card card-body ${styles.InnerCard}`}>
           <FontAwesomeIcon className={styles.Svg} onClick={click} icon={faTimesCircle} />
           <div className={styles.TopContainer}>
@@ -80,8 +87,9 @@ const LaunchModal = ({click, setModal, selectedLaunch}) => {
             </p>
           </div>
         </div>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default LaunchModal

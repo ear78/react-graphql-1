@@ -29,6 +29,12 @@
   width: 60%;
   left: 20%;
   padding: 50px;
+
+  &.Loading {
+    padding-top: 45%;
+    padding-top: 30vh;
+    padding-bottom: 30vh;
+  }
 }
 
 .Svg {
