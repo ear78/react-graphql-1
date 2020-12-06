@@ -5,7 +5,7 @@ import { useQuery, gql } from '@apollo/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import Moment from 'react-moment'
-import SmallLoader from './SmallLoader'
+import Spinner from './Spinner'
 
 const LAUNCH_QUERY = gql`
   query LaunchQuery($flight_number: Int!) {
@@ -41,7 +41,7 @@ const LaunchModal = ({click, setModal, selectedLaunch}) => {
     return (
       <div className={`${styles.LaunchModal} ${setModal ? styles.Active : ''}`}>
         <div className={`card card-body ${styles.InnerCard} ${styles.Loading}`}>
-          <SmallLoader/>
+          <Spinner small/>
         </div>
       </div>
       )

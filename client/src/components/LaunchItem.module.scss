@@ -1,4 +1,11 @@
 .LaunchItem {
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid crimson;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  }
+
   img {
     width: auto;
     height: 75px;

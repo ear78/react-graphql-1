@@ -4,7 +4,7 @@ import styles from './Launches.module.scss'
 import { useQuery, gql } from '@apollo/client'
 import LaunchItem from './LaunchItem'
 import LaunchModal from './LaunchModal'
-import DataLoading from './DataLoading'
+import Spinner from './Spinner'
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -38,7 +38,7 @@ const Launches = (props) => {
 
   const { loading, error, data } = useQuery(LAUNCHES_QUERY);
 
-  if (loading) return <DataLoading />;
+  if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
     let launch = data.launches.map((launch, i) => {
