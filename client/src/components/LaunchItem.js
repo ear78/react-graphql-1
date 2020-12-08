@@ -6,7 +6,7 @@ import Moment from 'react-moment'
 const LaunchItem = ({ click, data:{ flight_number, mission_name, launch_date_local, launch_success, links: { mission_patch } }}) => {
 
   return (
-    <div key={flight_number} className={`card card-body mb-3 ${styles.LaunchItem}`}>
+    <div key={flight_number} className={`card card-body mb-3 ${styles.LaunchItem} ${launch_success ? styles.Success : styles.Failed}`}>
       <div className="row">
         <div className="col-md-9">
           <img src={mission_patch}/>

@@ -2,8 +2,15 @@
   transition: all 0.3s ease;
 
   &:hover {
-    border: 1px solid crimson;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  &.Failed:hover {
+    border: 1px solid crimson;
+  }
+
+  &.Success:hover {
+    border: 1px solid green;
   }
 
   img {

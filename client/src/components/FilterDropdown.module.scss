@@ -1,0 +1,17 @@
+.FilterDropdown {
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 3px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Label {
+  color: gray;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}

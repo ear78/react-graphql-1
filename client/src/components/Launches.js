@@ -5,6 +5,7 @@ import { useQuery, gql } from '@apollo/client'
 import LaunchItem from './LaunchItem'
 import LaunchModal from './LaunchModal'
 import Spinner from './Spinner'
+import FilterRow from './FilterRow'
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -41,7 +42,29 @@ const Launches = (props) => {
   if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
-    let launch = data.launches.map((launch, i) => {
+    let arrLength = data.launches.length - 1
+    let spliced = data.launches.slice()
+    spliced.pop()
+
+    let filterData = spliced.filter(launch => {
+      let filtered
+      if(props.filter === 'All Launches') {
+        filtered = launch
+      }
+      if(props.filter === 'Successful Launches') {
+        if(launch.launch_success === true) {
+          filtered = launch
+        }
+      }
+      if(props.filter === 'Failed Launches') {
+        if(launch.launch_success === false || launch.launch_success === null) {
+          filtered = launch
+        }
+      }
+      return filtered
+    })
+
+    let launch = filterData.map((launch, i) => {
       return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={i} data={launch}/>
     })
 
@@ -54,7 +77,6 @@ const Launches = (props) => {
     } else {
       launchModal = null
     }
-
 
   return (
     <div className={styles.Launches}>
