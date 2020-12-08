@@ -29,7 +29,7 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <FilterRow change={handleChange}/>
+              <FilterRow bootClass="col-6" change={handleChange}/>
               <Launches filter={currentFilter}/>
             </div>
           </div>

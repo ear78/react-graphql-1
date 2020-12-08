@@ -12,7 +12,7 @@ function FilterDropdown(props) {
 
   return (
     <Fragment>
-      <label for={props.labelFor}>{props.label}</label>
+      <label className={styles.Label} htmlFor={props.labelFor}>{props.labelText}</label>
       <select
         id={props.labelFor}
         className={styles.FilterDropdown}

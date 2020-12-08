@@ -4,7 +4,7 @@ import FilterDropdown from './FilterDropdown'
 
 function FilterRow(props) {
   return (
-    <div className={styles.FilterRow}>
+    <div className={`${props.bootClass} ${styles.FilterRow}`}>
       <FilterDropdown
         labelFor="launch-filter"
         labelText="Launch Filter"

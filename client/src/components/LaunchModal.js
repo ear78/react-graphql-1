@@ -56,14 +56,14 @@ const LaunchModal = ({click, setModal, selectedLaunch}) => {
               src={data.launch.links.mission_patch}
               alt={`${data.launch.rocket.rocket_name} ${data.launch.mission_name}`}/>
 
-            <p className={styles.TopDetails}>
+            <div className={styles.TopDetails}>
               <h3 className={styles.Title}>Flight: #{data.launch.flight_number}</h3>
               <p>
                 <span className={styles.DetailsTitle}>Mission Name:</span> {data.launch.mission_name}
               </p>
               <p><span className={styles.DetailsTitle}>Rocket Name:</span> {data.launch.rocket.rocket_name}</p>
               <p><span className={styles.DetailsTitle}>Rocket Type:</span> {data.launch.rocket.rocket_type}</p>
-            </p>
+            </div>
           </div>
 
           <div className={styles.BottomContainer}>
