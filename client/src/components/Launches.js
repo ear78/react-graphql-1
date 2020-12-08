@@ -42,7 +42,11 @@ const Launches = (props) => {
   if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
-    let filterData = data.launches.filter(launch => {
+    let arrLength = data.launches.length - 1
+    let spliced = data.launches.slice()
+    spliced.pop()
+
+    let filterData = spliced.filter(launch => {
       let filtered
       if(props.filter === 'All Launches') {
         filtered = launch
