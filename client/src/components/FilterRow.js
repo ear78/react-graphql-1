@@ -5,7 +5,10 @@ import FilterDropdown from './FilterDropdown'
 function FilterRow(props) {
   return (
     <div className={styles.FilterRow}>
-      <FilterDropdown change={props.change}/>
+      <FilterDropdown
+        labelFor="launch-filter"
+        labelText="Launch Filter"
+        change={props.change}/>
     </div>
   )
 }

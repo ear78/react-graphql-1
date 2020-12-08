@@ -1,0 +1,9 @@
+.FilterDropdown {
+  padding: 12px;
+  border: 2px solid;
+  border-radius: 3px;
+
+  &:focus {
+    outline: none;
+  }
+}
