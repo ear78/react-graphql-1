@@ -6,6 +6,7 @@ import LaunchItem from './LaunchItem'
 import LaunchModal from './LaunchModal'
 import Spinner from './Spinner'
 import FilterRow from './FilterRow'
+import filtering from '../assets/js/filtering'
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -42,27 +43,12 @@ const Launches = (props) => {
   if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
-    let arrLength = data.launches.length - 1
-    let spliced = data.launches.slice()
-    spliced.pop()
-
-    let filterData = spliced.filter(launch => {
-      let filtered
-      if(props.filter === 'All Launches') {
-        filtered = launch
-      }
-      if(props.filter === 'Successful Launches') {
-        if(launch.launch_success === true) {
-          filtered = launch
-        }
-      }
-      if(props.filter === 'Failed Launches') {
-        if(launch.launch_success === false || launch.launch_success === null) {
-          filtered = launch
-        }
-      }
-      return filtered
-    })
+    /*
+    * Main Filtering function takes a data arg and the filter type arg. Found in /assets/* js. 
+    * @params - appData <Array>
+    * @params - filterType <String>
+    */
+    let filterData = filtering(data.launches, props.filter)
 
     let launch = filterData.map((launch, i) => {
       return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={i} data={launch}/>
