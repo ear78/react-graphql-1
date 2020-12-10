@@ -4,9 +4,8 @@ import FilterOption from './FilterOption'
 
 
 function FilterDropdown(props) {
-  const options = ['All Launches', 'Failed Launches', 'Successful Launches']
 
-  let option = options.map((item, i) => {
+  let option = props.data.map((item, i) => {
     return <FilterOption key={i} option={item}/>
   })
 
