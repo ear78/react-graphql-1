@@ -19,7 +19,7 @@ const filtering = (appData, filterType) => {
       }
     }
     if(filterType === 'Falcon 1') {
-      if(launch.rocket.rocket_name === 'Falcon 9') {
+      if(launch.rocket.rocket_name === 'Falcon 1') {
         filtered = launch
       }
     }
