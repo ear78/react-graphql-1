@@ -1,5 +1,4 @@
 const filtering = (appData, filterType) => {
-  console.log('filtering', appData, filterType);
   let arrLength = appData.length - 1
   let spliced = appData.slice()
   spliced.pop()
@@ -19,8 +18,25 @@ const filtering = (appData, filterType) => {
         filtered = launch
       }
     }
+    if(filterType === 'Falcon 1') {
+      if(launch.rocket.rocket_name === 'Falcon 9') {
+        filtered = launch
+      }
+    }
+    if(filterType === 'Falcon 9') {
+      if(launch.rocket.rocket_name === 'Falcon 9') {
+        filtered = launch
+      }
+    }
+    if(filterType === 'Falcon Heavy') {
+      if(launch.rocket.rocket_name === 'Falcon Heavy') {
+        filtered = launch
+      }
+    }
+
     return filtered
   })
+
   return filterData
 }
 

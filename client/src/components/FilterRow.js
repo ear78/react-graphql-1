@@ -3,12 +3,28 @@ import styles from './FilterRow.module.scss'
 import FilterDropdown from './FilterDropdown'
 
 function FilterRow(props) {
+  const options = {
+    launches: ['All Launches', 'Failed Launches', 'Successful Launches'],
+    rockets: ['Falcon 1', 'Falcon 9', 'Falcon Heavy']
+  }
+
   return (
     <div className={`${props.bootClass} ${styles.FilterRow}`}>
-      <FilterDropdown
-        labelFor="launch-filter"
-        labelText="Launch Filter"
-        change={props.change}/>
+      <div className="col-12 col-md-6">
+        <FilterDropdown
+          data={options.launches}
+          labelFor="launch-filter"
+          labelText="Filter By Launch"
+          change={props.change}/>
+      </div>
+      <div className="col-12 col-md-6">
+        <FilterDropdown
+          data={options.rockets}
+          labelFor="rocket-filter"
+          labelText="Filter By Rocket"
+          change={props.change}/>
+      </div>
+
     </div>
   )
 }

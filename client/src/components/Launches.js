@@ -44,7 +44,7 @@ const Launches = (props) => {
   if (error) return <p>Error :(</p>;
 
     /*
-    * Main Filtering function takes a data arg and the filter type arg. Found in /assets/* js. 
+    * Main Filtering function takes a data arg and the filter type arg. Found in /assets/* js.
     * @params - appData <Array>
     * @params - filterType <String>
     */

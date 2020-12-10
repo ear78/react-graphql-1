@@ -13,6 +13,7 @@ const client = new ApolloClient({
 function App() {
   const [currentFilter, setCurrentFilter] = useState('All Launches')
 
+
   const handleChange = (e) => {
     let val = e.target.value
     setCurrentFilter(val)
@@ -29,7 +30,7 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <FilterRow bootClass="col-6" change={handleChange}/>
+              <FilterRow bootClass="row" change={handleChange}/>
               <Launches filter={currentFilter}/>
             </div>
           </div>
