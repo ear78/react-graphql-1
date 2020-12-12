@@ -39,12 +39,6 @@ const Launches = (props) => {
     }
   );
 
-  useEffect(() => {
-    if(data) {
-      // setCurrentFilterData(data.launches)
-    }
-  })
-
   if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
 
