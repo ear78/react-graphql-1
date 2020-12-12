@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styles from './Launches.module.scss'
 import { useQuery, gql } from '@apollo/client'
@@ -30,7 +30,8 @@ const LAUNCHES_QUERY = gql`
 `
 
 const Launches = (props) => {
-
+  const { loading, error, data } = useQuery(LAUNCHES_QUERY);
+  const [currentFilterData, setCurrentFilterData] = useState([])
   const [{currentLaunch, isModalActive}, setCurrentLaunch] = useState(
     {
       currentLaunch: null,
@@ -38,17 +39,22 @@ const Launches = (props) => {
     }
   );
 
-  const { loading, error, data } = useQuery(LAUNCHES_QUERY);
+  useEffect(() => {
+    if(data) {
+      // setCurrentFilterData(data.launches)
+    }
+  })
 
   if (loading) return <Spinner />;
   if (error) return <p>Error :(</p>;
+
+  let filterData = filtering(data.launches, props.filter)
 
     /*
     * Main Filtering function takes a data arg and the filter type arg. Found in /assets/* js.
     * @params - appData <Array>
     * @params - filterType <String>
     */
-    let filterData = filtering(data.launches, props.filter)
 
     let launch = filterData.map((launch, i) => {
       return <LaunchItem click={() => setCurrentLaunch({currentLaunch: launch.flight_number, isModalActive: true})} key={i} data={launch}/>
